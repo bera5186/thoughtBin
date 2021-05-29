@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/rahul/.local/share/virtualenvs/main_service-FwtPUJ95/bin/python3.9"
+    "python.pythonPath": "/home/rahul/.local/share/virtualenvs/main_service-FwtPUJ95/bin/python3.9",
+    "python.formatting.provider": "black"
 }

@@ -8,8 +8,14 @@ django = "*"
 djangorestframework = "*"
 psycopg2 = "*"
 django-dotenv = "*"
+djoser = "*"
+sentry-sdk = "*"
 
 [dev-packages]
+black = "*"
 
 [requires]
 python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
