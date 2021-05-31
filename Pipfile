@@ -11,6 +11,9 @@ django-dotenv = "*"
 djoser = "*"
 sentry-sdk = "*"
 uuid = "*"
+celery = "*"
+flower = "*"
+django-celery-results = "*"
 
 [dev-packages]
 black = "*"
