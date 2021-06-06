@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class AuthmiddlewareConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'authMiddleware'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "authMiddleware"

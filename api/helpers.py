@@ -1,6 +1,7 @@
 from uuid import UUID
 
-def is_uuid(uuid : str, version: int = 4) -> bool:
+
+def is_uuid(uuid: str, version: int = 4) -> bool:
     """
     Check if given string is valid uuid or not
 

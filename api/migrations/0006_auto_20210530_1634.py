@@ -10,20 +10,39 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('api', '0005_alter_comment_author_reply'),
+        ("api", "0005_alter_comment_author_reply"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Clap',
+            name="Clap",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('claps', models.BigIntegerField(default=0)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.post')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("claps", models.BigIntegerField(default=0)),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="api.post"
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'unique_together': {('user', 'post')},
+                "unique_together": {("user", "post")},
             },
         ),
     ]

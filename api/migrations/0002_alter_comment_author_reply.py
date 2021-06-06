@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0001_initial'),
+        ("api", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='comment',
-            name='author_reply',
+            model_name="comment",
+            name="author_reply",
             field=models.TextField(max_length=1000, null=True),
         ),
     ]

@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "djoser",
-    'django_celery_results'
+    "django_celery_results",
 ]
 
 MIDDLEWARE = [
@@ -104,15 +104,15 @@ REST_FRAMEWORK = {
     ],
 }
 
-AUTH_USER_MODEL = 'authMiddleware.User'
+AUTH_USER_MODEL = "authMiddleware.User"
 
 DJOSER = {
-    'LOGIN_FIELD': 'email',
-    'USER_CREATE_PASSWORD_RETYPE': True,
-    'SERIALIZERS': {
-        'user_create': 'authMiddleware.serializers.UserCreateSerializer',
-        'user': 'authMiddleware.serializers.UserCreateSerializer'
-    }
+    "LOGIN_FIELD": "email",
+    "USER_CREATE_PASSWORD_RETYPE": True,
+    "SERIALIZERS": {
+        "user_create": "authMiddleware.serializers.UserCreateSerializer",
+        "user": "authMiddleware.serializers.UserCreateSerializer",
+    },
 }
 
 # Password validation
@@ -173,4 +173,4 @@ sentry_sdk.init(
 from .broker import URL
 
 CELERY_BROKER_URL = URL
-CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_BACKEND = "django-db"
