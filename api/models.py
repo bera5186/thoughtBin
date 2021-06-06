@@ -41,5 +41,5 @@ class Clap(models.Model):
     claps = models.BigIntegerField(default=0)
 
     def __str__(self) -> str:
-        return f"{self.user} {self.post} {self.clap}"
+        return f"{self.user} {self.post} {self.claps}"
     

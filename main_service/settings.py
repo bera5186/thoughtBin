@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "djoser",
-    "django_celery_results"
+    'django_celery_results'
 ]
 
 MIDDLEWARE = [
@@ -170,7 +170,7 @@ sentry_sdk.init(
     send_default_pii=True,
 )
 
-CELERY_BROKER_URL = '' # add broker URL here
+from .broker import URL
 
-CELERY_RESULT_BACKEND='django-db'
-CELERY_CACHE_BACKEND='django-cache'
+CELERY_BROKER_URL = URL
+CELERY_RESULT_BACKEND = 'django-db'

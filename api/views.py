@@ -18,46 +18,11 @@ from .models import *
 from .serializers import *
 from .helpers import is_uuid
 from datetime import date
-import math
 
 
-@permission_classes([IsAuthenticated])
 class ServerTime(APIView):
     def get(self, request):
         return Response(data=date.today(), status=status.HTTP_200_OK)
-
-
-# @permission_classes([IsAuthenticated])
-# class Post_CRUD(APIView):
-#     """
-#         Post Crud endpoints
-#
-#     """
-#     def get(self, request):
-#
-#         context = {"error": True}
-#
-#         post_id = request.GET.get("id")
-#
-#         # check if post is
-#         if post_id is None:
-#             context["message"] = "Id in query is required"
-#             return Response(context, status=status.HTTP_400_BAD_REQUEST)
-#
-#         if not is_uuid(post_id):
-#             context["message"] = "Id should be a valid UUID"
-#             return Response(context, status=status.HTTP_400_BAD_REQUEST)
-#
-#         try:
-#             post = Post.objects.get(id=post_id)
-#             serializer = PostSerializer(post, many=False)
-#             context["error"] = False
-#             context["result"] = serializer.data
-#             return Response(context, status=status.HTTP_200_OK)
-#         except Post.DoesNotExist:
-#             post = None
-#             context["result"] = post
-#             return Response(context, status=status.HTTP_404_NOT_FOUND)
 
 
 @permission_classes([IsAuthenticated])
@@ -99,6 +64,9 @@ class PostsCRUD(viewsets.ViewSet):
 
     @action(detail=True, methods=["POST", "GET"])
     def clap(self, request, pk):
+        """
+        Runs a celery task to like post
+        """
 
         context = {"error": True}
 
@@ -112,11 +80,11 @@ class PostsCRUD(viewsets.ViewSet):
             context["message"] = "clap_count should be an integer greater than 0"
             return Response(context, status=status.HTTP_400_BAD_REQUEST)
 
+        if not is_uuid(pk):
+            context["message"] = "Invalid PostId"
+            return Response(context, status=status.HTTP_400_BAD_REQUEST)
 
         user = UserCreateSerializer(request.user).data
-        print(pk)
-        print(type(user["email"]))
-        print(type(pk))
         clap_post.delay(user["email"], str(pk), clap_count)
 
         context["error"] = False
